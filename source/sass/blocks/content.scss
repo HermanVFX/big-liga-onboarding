@@ -1,0 +1,171 @@
+.content {
+  padding-left: 35px;
+  padding-right: 35px;
+  max-width: 1024px;
+  margin: auto;
+  background-image: url("../img/svg/BG-A.svg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 664px;
+  margin-top: 40px;
+  min-height: 651px;
+  height: auto;
+}
+
+.content__wrapper {
+  display: flex;
+}
+
+.content__text {
+  p {
+    margin-top: 64px;
+    font-size: 96px;
+    line-height: 96px;
+    color: $color-neon-blue;
+  }
+}
+
+.content__aside {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-top: 25px;
+    margin-bottom: 90px;
+    font-size: 30px;
+    line-height: 40px;
+    width: 352px;
+  }
+}
+
+.content__image {
+  max-width: 316px;
+}
+
+@include viewport--md {
+  .content__aside {
+    color: $color-default-white;
+    background-color: $color-neon-blue;
+    position: fixed;
+    top: 71px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 71px);
+    transform: translate(100%, 0);
+    transition: transform $modal-transition-settings;
+
+    &--active {
+      transform: translate(0, 0);
+    }
+  }
+
+  .content__aside-wrapper {
+    margin: auto;
+  }
+
+  .content__text p {
+    margin: 130px auto auto 35px;
+    max-width: 799px;
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+    background-image: none;
+  }
+
+  .lightning {
+    fill: $color-default-white;
+  }
+
+  .flag {
+    fill: $color-default-white;
+    stroke: $color-default-black;
+  }
+}
+
+// active
+
+.content--active {
+  .content__image {
+    --webkit-animation: image 1s ease-out 1;
+    animation: image 1s ease-out 1;
+  }
+
+  .lightning {
+    --webkit-animation: lightning-op  2s ease-out 1, lightning-up  3s ease-out 1;
+    animation: lightning-op  2s ease-out 1, lightning-up  3s ease-out 1;
+  }
+
+  .content__aside p {
+    --webkit-animation: text-right 1s ease-out 1;
+    animation: text-right 1s ease-out 1;
+  }
+
+  .content__text p {
+    --webkit-animation: text-left 1s ease-out 1;
+    animation: text-left 1s ease-out 1;
+  }
+}
+
+// animation
+
+@keyframes image {
+  0% {
+    transform: translate(150%, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes text-right {
+  0% {
+    transform: translate(0, 150%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes text-left {
+  0% {
+    transform: translate(-150%, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes lightning-up {
+  0% {
+    transform: translate(0, 30px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes lightning-op {
+  0% {
+    opacity: 0;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

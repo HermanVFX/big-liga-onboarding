@@ -1,0 +1,120 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: $color-default-white;
+  display: flex;
+  align-items: center;
+  padding-left: 112px;
+  padding-right: 112px;
+  min-height: 540px;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+
+  @include viewport--md {
+    padding-left: 109px;
+    padding-right: 109px;
+  }
+
+  &--close {
+    opacity: 0;
+
+    --webkit-animation: preloader-close 3s 1s ease-in-out infinite;
+    animation: preloader-close 3s 1s ease-in-out infinite;
+
+    .preloader__logo {
+      --webkit-animation: preloader-logo-close 1s ease-out 1;
+      animation: preloader-logo-close 1s ease-out 1;
+      opacity: 0;
+    }
+  }
+}
+
+.preloader__logo {
+  --webkit-animation: preloader-logo 1s ease-out 1;
+  animation: preloader-logo 1s ease-out 1;
+
+  height: auto;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+
+.preloader__text {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+
+  text-align: center;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 22px;
+
+  --webkit-animation: preloader-text 1s ease-in-out infinite;
+  animation: preloader-text 1s ease-in-out infinite;
+}
+
+.preloader--touch .preloader__text--enter {
+  visibility: hidden;
+}
+
+.preloader--no-touch .preloader__text--touch {
+  visibility: hidden;
+}
+
+//   animation
+
+
+@keyframes preloader-text {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes preloader-logo {
+  0% {
+    transform: translate(-150%, 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+@keyframes preloader-logo-close {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(150%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes preloader-close {
+  0% {
+    width: 0;
+    height: 0;
+    padding: 0;
+  }
+
+  100% {
+    width: 0;
+    height: 0;
+    padding: 0;
+  }
+}
